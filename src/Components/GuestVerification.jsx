@@ -39,28 +39,25 @@ export default function GuestVerification() {
     setShowInputError(false);
     setIsSubmitting(true);
 
-    const formData = new URLSearchParams();
-    formData.append("First_Name", First_Name);
-    formData.append("Middle_Name", Middle_Name);
-    formData.append("Last_Name", Last_Name);
+    const formData = new FormData();
+formData.append("First_Name", First_Name);
+formData.append("Middle_Name", Middle_Name);
+formData.append("Last_Name", Last_Name);
 
-    axios.post("https://manuelnethan.pythonanywhere.com/api/verify", formData, {
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
-      },
-    })
-      .then(() => {
-        setToastMessage("🎉 Guest added successfully!");
-        setShowToast(true);
-        setCanDownload(true);
-      })
-      .catch(() => {
-        setToastMessage("❌ Error adding guest. Please try again.");
-        setShowToast(true);
-        setCanDownload(false);
-      })
-      .finally(() => setIsSubmitting(false));
-  };
+axios.post("https://manuelnethan.pythonanywhere.com/api/verify", formData)
+  .then(() => {
+    setToastMessage("🎉 Guest added successfully!");
+    setShowToast(true);
+    setCanDownload(true);
+  })
+  .catch((err) => {
+    console.error(err);
+    setToastMessage("❌ Error adding guest. Please try again.");
+    setShowToast(true);
+    setCanDownload(false);
+  })
+  .finally(() => setIsSubmitting(false));
+
 
   const downloadImageCard = () => {
     const imageUrl = "/img.png"; // replace with your hosted image path
