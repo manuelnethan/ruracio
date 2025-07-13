@@ -38,27 +38,29 @@ export default function GuestVerification() {
     }
     setShowInputError(false);
     setIsSubmitting(true);
-
+  
     const formData = new FormData();
-formData.append("First_Name", First_Name);
-formData.append("Middle_Name", Middle_Name);
-formData.append("Last_Name", Last_Name);
-
-axios.post("https://manuelnethan.pythonanywhere.com/api/verify", formData)
-  .then(() => {
-    setToastMessage("🎉 Guest added successfully!");
-    setShowToast(true);
-    setCanDownload(true);
-  })
-  .catch((err) => {
-    console.error(err);
-    setToastMessage("❌ Error adding guest. Please try again.");
-    setShowToast(true);
-    setCanDownload(false);
-  })
-  .finally(() => setIsSubmitting(false));
-
-
+    formData.append("First_Name", First_Name);
+    formData.append("Middle_Name", Middle_Name);
+    formData.append("Last_Name", Last_Name);
+  
+    axios
+      .post("https://manuelnethan.pythonanywhere.com/api/verify", formData)
+      .then(() => {
+        setToastMessage("🎉 Guest added successfully!");
+        setShowToast(true);
+        setCanDownload(true);
+      })
+      .catch((err) => {
+        console.error(err);
+        setToastMessage("❌ Error adding guest. Please try again.");
+        setShowToast(true);
+        setCanDownload(false);
+      })
+      .finally(() => setIsSubmitting(false));
+  }; // ← 🛠️ THIS BRACKET WAS MISSING
+  
+  // ✅ Now this is defined outside handleSubmit
   const downloadImageCard = () => {
     const imageUrl = "/img.png"; // replace with your hosted image path
     const link = document.createElement("a");
@@ -68,6 +70,8 @@ axios.post("https://manuelnethan.pythonanywhere.com/api/verify", formData)
     link.click();
     document.body.removeChild(link);
   };
+  
+ 
 
   return (
     <>
