@@ -44,7 +44,7 @@ export default function GuestVerification() {
     formData.append("Middle_Name", Middle_Name);
     formData.append("Last_Name", Last_Name);
 
-    axios.post("http://localhost:5000/api/verify", formData, {
+    axios.post("https://manuelnethan.pythonanywhere.com/api/verify", formData, {
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
       },
