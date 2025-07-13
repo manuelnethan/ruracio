@@ -61,15 +61,17 @@ export default function GuestVerification() {
   }; // ← 🛠️ THIS BRACKET WAS MISSING
   
   // ✅ Now this is defined outside handleSubmit
-  const downloadImageCard = () => {
-    const imageUrl = "https://manuelnethan.pythonanywhere.com/static/images/Ruracio_Invitation.png"; // replace with your hosted image path
-    const link = document.createElement("a");
-    link.href = imageUrl;
-    link.download = "Ruracio_Invitation.png";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  };
+  const imageUrl = "https://manuelnethan.pythonanywhere.com/download-invitation";
+
+const downloadImageCard = () => {
+  const link = document.createElement("a");
+  link.href = imageUrl;
+  link.download = "Ruracio_Invitation.png"; // optional, but good practice
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
+
   
  
 
