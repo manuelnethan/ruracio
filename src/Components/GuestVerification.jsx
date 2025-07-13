@@ -62,7 +62,7 @@ export default function GuestVerification() {
   
   // ✅ Now this is defined outside handleSubmit
   const downloadImageCard = () => {
-    const imageUrl = "https://manuelnethan.pythonanywhere.com/static/ruracio_Invitation.png"; // replace with your hosted image path
+    const imageUrl = "https://manuelnethan.pythonanywhere.com/static/images/Ruracio_Invitation.png"; // replace with your hosted image path
     const link = document.createElement("a");
     link.href = imageUrl;
     link.download = "Ruracio_Invitation.png";
